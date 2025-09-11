@@ -54,6 +54,7 @@ export default function App() {
         const payload = JSON.stringify(form);
         if (window.Telegram?.WebApp) {
             window.Telegram.WebApp.sendData(payload);
+            window.Telegram.WebApp.close();
         } else {
             console.log("Payload:", payload);
         }
