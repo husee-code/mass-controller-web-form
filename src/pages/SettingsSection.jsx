@@ -39,6 +39,7 @@ function intervalStringToSeconds(s) {
 export default function SettingsSection({ title, isEditing, data }) {
     const [form, setForm] = useState({
         page: isEditing ? "EditFlowPage" : "CreateFlowPage",
+        flowId: data.flow_id,
         channel: "",
         sessionAmount: "",
         interval: "00:00",
