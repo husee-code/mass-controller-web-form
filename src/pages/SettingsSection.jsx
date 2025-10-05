@@ -41,6 +41,7 @@ export default function SettingsSection({ title, isEditing, data }) {
         page: isEditing ? "EditFlowPage" : "CreateFlowPage",
         flowId: data.flow_id,
         channel: "",
+        channel_name: "",
         sessionAmount: "",
         interval: "00:00",
         unsubscribeInterval: {value: 0, unit: "days"},
@@ -109,7 +110,17 @@ export default function SettingsSection({ title, isEditing, data }) {
             }
 
             <label>
-                Количество: {data.page === "EditFlowPage" ? `${data.completed} /`: ""}
+                Название ссылки:
+                <input
+                    name="channel_name"
+                    value={form.channel_name}
+                    onChange={handleChange}
+                    required
+                />
+            </label>
+
+            <label>
+                Количество: {data.page === "EditFlowPage" ? `${data.completed} /` : ""}
                 <input
                     type="text"
                     inputMode="numeric"
@@ -117,7 +128,7 @@ export default function SettingsSection({ title, isEditing, data }) {
                     name="sessionAmount"
                     value={form.sessionAmount}
                     onChange={handleChange}
-                    style={{width:'3rem', marginLeft:'0.5rem'}}
+                    style={{width: '3rem', marginLeft: '0.5rem'}}
                 />
             </label>
 
@@ -162,7 +173,7 @@ export default function SettingsSection({ title, isEditing, data }) {
                         name="startMode"
                         value="timer"
                         checked={form.startData.type === "timer"}
-                        onChange={(value)=>{
+                        onChange={(value) => {
                             setForm((prev) => ({
                                 ...prev, startData: {type: "timer", value},
                             }));
@@ -176,7 +187,7 @@ export default function SettingsSection({ title, isEditing, data }) {
                         type="time"
                         name="startTimer"
                         value={form.startData.value ?? "00:00"}
-                        onChange={(e)=>{
+                        onChange={(e) => {
                             setForm((prev) => ({
                                 ...prev, startData: {type: "timer", value: e.target.value},
                             }));
@@ -190,7 +201,7 @@ export default function SettingsSection({ title, isEditing, data }) {
                         name="startMode"
                         value="datetime"
                         checked={form.startData.type === "datetime"}
-                        onChange={()=>{
+                        onChange={() => {
                             setForm((prev) => ({
                                 ...prev, startData: {type: "datetime", value: null},
                             }));
@@ -203,9 +214,9 @@ export default function SettingsSection({ title, isEditing, data }) {
                         type="datetime-local"
                         name="startDateTime"
                         value={form.startData.value}
-                        onChange={(e)=>{
+                        onChange={(e) => {
                             setForm((prev) => ({
-                                ...prev, startData: {type: "datetime", value:e.target.value},
+                                ...prev, startData: {type: "datetime", value: e.target.value},
                             }));
                         }}
                     />
