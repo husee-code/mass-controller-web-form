@@ -46,7 +46,11 @@ export default function SettingsSection({ title, isEditing, data }) {
         interval: "00:00",
         unsubscribeInterval: {value: 0, unit: "days"},
         startData: {type: "timer", value: "00:00"},  // timer | datetime
+        jitter: "00:10",
+        offset: 0
     });
+
+    const [showMore, setShowMore] = useState(false);
 
     useEffect(() => {
         console.log(data)
@@ -222,7 +226,38 @@ export default function SettingsSection({ title, isEditing, data }) {
                     />
                 )}
             </fieldset>
-
+            <div
+                style={{display: "flex", gap: "8px"}}
+                onClick={() => {setShowMore(
+                    !showMore
+                )}}
+            >
+                <p>Дополнительные настройки </p><p style={{marginLeft: "auto", marginRight: "1rem"}}>v</p>
+            </div>
+            {showMore && <>
+                <label>
+                    Случайная задержка
+                    <input
+                        type="time"
+                        name="jitter"
+                        value={form.jitter}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label>
+                    Сдвиг по подпискам
+                    <input
+                        type="text"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        name="offset"
+                        value={form.offset}
+                        onChange={handleChange}
+                        style={{width: '3rem', marginLeft: '0.5rem'}}
+                    />
+                </label>
+            </>
+            }
             <button type="submit">Отправить</button>
         </form>
     </div>
