@@ -29,11 +29,11 @@ function intervalStringToSeconds(s) {
     }
 
     // Преобразуем части в числа
-    const hours = parseInt(parts[0]) || 0;
-    const minutes = parseInt(parts[1]) || 0;
+    const minutes = parseInt(parts[0]) || 0;
+    const seconds = parseInt(parts[1]) || 0;
 
     // Вычисляем общее количество секунд
-    return hours * 3600 + minutes * 60;
+    return minutes * 60 + seconds;
 }
 
 export default function SettingsSection({ title, isEditing, data }) {
@@ -82,6 +82,7 @@ export default function SettingsSection({ title, isEditing, data }) {
         let result = {
             ...form,
             interval: intervalStringToSeconds(form.interval),
+            jitter: intervalStringToSeconds(form.jitter),
         }
         if (form.startData.type === "timer") {
             result.startData.value = intervalStringToSeconds(form.startData.value);
