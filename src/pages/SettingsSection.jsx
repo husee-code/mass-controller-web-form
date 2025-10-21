@@ -5,13 +5,13 @@ function intervalSecondsToString(seconds) {
         return '00:00';
     }
 
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
+    const minutes = Math.floor(seconds / 60);
+    const _seconds = seconds % 60;
 
-    const formattedHours = hours.toString().padStart(2, '0');
     const formattedMinutes = minutes.toString().padStart(2, '0');
+    const formattedSeconds = _seconds.toString().padStart(2, '0');
 
-    return `${formattedHours}:${formattedMinutes}`;
+    return `${formattedMinutes}:${formattedSeconds}`;
 }
 
 function intervalStringToSeconds(s) {
@@ -57,6 +57,7 @@ export default function SettingsSection({ title, isEditing, data }) {
         setForm((prev) => ({
             ...prev,
             sessionAmount: data?.sessionAmount || prev.sessionAmount,
+            channel_name: data?.channel_name || prev.channel_name,
             interval: intervalSecondsToString(data?.interval) || prev.interval,
             unsubscribeInterval: data?.unsubscribeInterval || prev.unsubscribeInterval
         }));
