@@ -130,7 +130,7 @@ export default function SettingsSection({ title, isEditing, data }) {
             </label>
 
             <label>
-                Количество: {data.page === "EditFlowPage" ? `${data.completed} /` : ""}
+                Количество: {isEditing ? `${data.completed} /` : ""}
                 <input
                     type="text"
                     inputMode="numeric"
