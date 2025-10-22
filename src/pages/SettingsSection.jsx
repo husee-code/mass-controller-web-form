@@ -48,7 +48,8 @@ export default function SettingsSection({ title, isEditing, data }) {
         startData: {type: "timer", value: "00:00"},  // timer | datetime
         jitter: "00:10",
         offset: 0,
-        completed: 0
+        completed: 0,
+        config: null
     });
 
     const [showMore, setShowMore] = useState(false);
@@ -63,6 +64,7 @@ export default function SettingsSection({ title, isEditing, data }) {
             jitter: data?.jitter || prev.jitter,
             offset: data?.offset || prev.offset,
             completed: data?.completed || prev.complete,
+            config: data?.config || prev.config,
         }));
     }, []);
 
@@ -100,6 +102,7 @@ export default function SettingsSection({ title, isEditing, data }) {
     };
     return <div style={{padding: "20px", fontFamily: "sans-serif"}}>
         <h2>{title}</h2>
+        {data.config.debug && <p>{JSON.stringify(data)}</p>}
         <form onSubmit={handleSubmit} style={{display: "grid", gap: "15px"}}>
             {!isEditing ?
                 <label>
