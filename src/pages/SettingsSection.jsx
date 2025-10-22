@@ -47,19 +47,22 @@ export default function SettingsSection({ title, isEditing, data }) {
         unsubscribeInterval: {value: 0, unit: "days"},
         startData: {type: "timer", value: "00:00"},  // timer | datetime
         jitter: "00:10",
-        offset: 0
+        offset: 0,
+        completed: null
     });
 
     const [showMore, setShowMore] = useState(false);
 
     useEffect(() => {
-        console.log(data)
         setForm((prev) => ({
             ...prev,
             sessionAmount: data?.sessionAmount || prev.sessionAmount,
             channel_name: data?.channel_name || prev.channel_name,
             interval: intervalSecondsToString(data?.interval) || prev.interval,
-            unsubscribeInterval: data?.unsubscribeInterval || prev.unsubscribeInterval
+            unsubscribeInterval: data?.unsubscribeInterval || prev.unsubscribeInterval,
+            jitter: data?.jitter || prev.jitter,
+            offset: data?.offset || prev.offset,
+            completed: data?.completed || prev.complete,
         }));
     }, []);
 
@@ -70,7 +73,6 @@ export default function SettingsSection({ title, isEditing, data }) {
 
     const handleUnsubscribeChange = (e) => {
         const { name, value } = e.target;
-        console.log({ name, value });
         setForm((prev) => ({
             ...prev,
             unsubscribeInterval: { ...prev.unsubscribeInterval, [name]: value },
