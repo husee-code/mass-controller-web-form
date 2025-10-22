@@ -82,7 +82,6 @@ export default function SettingsSection({ title, isEditing, data }) {
     };
 
     const handleSubmit = (e) => {
-        console.log(form);
         e.preventDefault();
         let result = {
             ...form,
@@ -102,7 +101,7 @@ export default function SettingsSection({ title, isEditing, data }) {
     };
     return <div style={{padding: "20px", fontFamily: "sans-serif"}}>
         <h2>{title}</h2>
-        {data.config.debug && <p>{JSON.stringify(data)}</p>}
+        {data?.config?.debug && <p>{JSON.stringify(data)}</p>}
         <form onSubmit={handleSubmit} style={{display: "grid", gap: "15px"}}>
             {!isEditing ?
                 <label>
