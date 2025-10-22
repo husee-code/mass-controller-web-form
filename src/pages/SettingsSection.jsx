@@ -48,7 +48,7 @@ export default function SettingsSection({ title, isEditing, data }) {
         startData: {type: "timer", value: "00:00"},  // timer | datetime
         jitter: "00:10",
         offset: 0,
-        completed: null
+        completed: 0
     });
 
     const [showMore, setShowMore] = useState(false);
