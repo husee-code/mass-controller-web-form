@@ -57,6 +57,7 @@ export default function SettingsSection({ title, isEditing, data }) {
     useEffect(() => {
         setForm((prev) => ({
             ...prev,
+            channel: data?.channel || prev.channel,
             sessionAmount: data?.sessionAmount || prev.sessionAmount,
             channel_name: data?.channel_name || prev.channel_name,
             interval: intervalSecondsToString(data?.interval) || prev.interval,
@@ -126,6 +127,7 @@ export default function SettingsSection({ title, isEditing, data }) {
                     value={form.channel_name}
                     onChange={handleChange}
                     required
+                    pattern="\S.*"
                 />
             </label>
 
@@ -139,6 +141,7 @@ export default function SettingsSection({ title, isEditing, data }) {
                     value={form.sessionAmount}
                     onChange={handleChange}
                     style={{width: '3rem', marginLeft: '0.5rem'}}
+                    required
                 />
             </label>
 
@@ -149,6 +152,7 @@ export default function SettingsSection({ title, isEditing, data }) {
                     name="interval"
                     value={form.interval}
                     onChange={handleChange}
+                    required
                 />
 
             </label>
@@ -162,6 +166,7 @@ export default function SettingsSection({ title, isEditing, data }) {
                         value={form.unsubscribeInterval.value ?? 0}
                         onChange={handleUnsubscribeChange}
                         placeholder="Число"
+                        required
                     />
                     <select
                         name="unit"
