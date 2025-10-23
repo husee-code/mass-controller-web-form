@@ -62,7 +62,7 @@ export default function SettingsSection({ title, isEditing, data }) {
             channel_name: data?.channel_name || prev.channel_name,
             interval: intervalSecondsToString(data?.interval) || prev.interval,
             unsubscribeInterval: data?.unsubscribeInterval || prev.unsubscribeInterval,
-            jitter: data?.jitter || prev.jitter,
+            jitter: intervalSecondsToString(data?.jitter) || prev.jitter,
             offset: data?.offset || prev.offset,
             completed: data?.completed || prev.complete,
             config: data?.config || prev.config,
