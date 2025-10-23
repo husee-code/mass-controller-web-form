@@ -49,6 +49,7 @@ export default function SettingsSection({ title, isEditing, data }) {
         jitter: "00:10",
         offset: 0,
         completed: 0,
+        maxAmount: 0,
         config: null
     });
 
@@ -65,6 +66,7 @@ export default function SettingsSection({ title, isEditing, data }) {
             jitter: intervalSecondsToString(data?.jitter) || prev.jitter,
             offset: data?.offset || prev.offset,
             completed: data?.completed || prev.complete,
+            maxAmount: data?.maxAmount || prev.maxAmount,
             config: data?.config || prev.config,
         }));
     }, []);
@@ -84,6 +86,10 @@ export default function SettingsSection({ title, isEditing, data }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (form.sessionAmount > form.maxAmount) {
+            alert(`Максимальное кол-во аккаунтов: ${form.maxAmount}. Указано: ${form.sessionAmount}`)
+            return;
+        }
         let result = {
             ...form,
             interval: intervalStringToSeconds(form.interval),
