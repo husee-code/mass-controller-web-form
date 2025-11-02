@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
 
+function make_link(channel) {
+    if (channel.startsWith("@")) {
+        return `https://t.me/${channel.substring(1, channel.length)}/`;
+    }
+    return channel;
+}
+
 function intervalSecondsToString(seconds) {
     if (typeof seconds !== 'number' || seconds < 0) {
         return '00:00';
@@ -112,9 +119,8 @@ export default function SettingsSection({ title, isEditing, data }) {
         <form onSubmit={handleSubmit} style={{display: "grid", gap: "15px"}}>
             {!isEditing ?
                 <label>
-                    Ссылка на канал:
+                    Ссылка на канал (если используете username, пишите в виде @username):
                     <input
-                        type="url"
                         name="channel"
                         value={form.channel}
                         onChange={handleChange}
@@ -122,7 +128,7 @@ export default function SettingsSection({ title, isEditing, data }) {
                     />
                 </label> :
                 <p>
-                    Ссылка на канал: <a href={data.channel} target="_blank">{data.channel}</a>
+                    Ссылка на канал: <a href={make_link(data.channel)} target="_blank">{data.channel}</a>
                 </p>
             }
 
