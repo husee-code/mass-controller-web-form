@@ -7,8 +7,7 @@ import './SelectSessionsPage.css';
 function OptionsBar({
     data,
     isCheckedList, setIsCheckedList,
-    isMultiSelect, setIsMultiSelect,
-    selected, setSelected
+    isMultiSelect, setIsMultiSelect
 }) {
 
     return <div className="options-bar">
