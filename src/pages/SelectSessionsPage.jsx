@@ -6,8 +6,9 @@ import './SelectSessionsPage.css';
 
 function OptionsBar({
     data,
-    isCheckedList, setIsCheckedList,
-    isMultiSelect, setIsMultiSelect
+    setIsCheckedList,
+    isMultiSelect, setIsMultiSelect,
+    handleSubmit
 }) {
 
     return <div className="options-bar">
@@ -25,11 +26,7 @@ function OptionsBar({
         >
             📝
         </div>
-        <div className="submit-button" onClick={()=>{
-            alert(data.accounts
-                .filter(account => isCheckedList[account[0]])
-                .map(account => account[0]));
-        }}>⬆️</div>
+        <div className="submit-button" onClick={handleSubmit}>⬆️</div>
     </div>
 }
 
@@ -122,7 +119,6 @@ export default function SelectSessionsPage({ data }) {
         </div>
         <OptionsBar
             data={data}
-            isCheckedList={isCheckedList}
             setIsCheckedList={setIsCheckedList}
             isMultiSelect={isMultiSelect}
             setIsMultiSelect={setIsMultiSelect}
