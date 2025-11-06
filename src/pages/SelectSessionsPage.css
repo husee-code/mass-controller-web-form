@@ -1,12 +1,11 @@
 /* SelectSessionsPage.css */
 
 .container {
-    padding: 16px;
     width: 100vw;
     box-sizing: border-box;
     min-height: 100vh;
     background: #f8f9fa;
-    padding-bottom: 80px;
+    padding: 16px 16px 80px;
 }
 
 .title {
@@ -148,17 +147,28 @@
 }
 
 .options-bar div {
-    width: fit-content;
-    /*background: lightgrey;*/
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #fff;
     padding: 12px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease;
+    text-align: center; /* Дополнительно для текста */
+    font-size: 30px; /* Увеличиваем размер эмодзи */
+    line-height: 1; /* Убираем лишние отступы */
+
+    transition: border-radius 0.2s;
 }
 
 .clear-button {
     background: #fdafaf;
+}
+
+.multi-select-button {
+    background: #e4e4e4;
 }
 
 .submit-button {
@@ -166,6 +176,7 @@
 }
 
 .multi-select-button.active{
-    background: red;
-    transform: scale(1.2);
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 5px lightblue;
+    /*transform: scale(1.2);*/
 }
