@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import SettingsSection from "./pages/SettingsSection.jsx";
+import SelectSessionsPage from "./pages/SelectSessionsPage.jsx";
 
 function getQueryParams() {
     const params = new URLSearchParams(window.location.search);
@@ -23,5 +24,6 @@ export default function App() {
     return <>
         {page === "CreateFlowPage" && <SettingsSection title="Настройки" isEditing={false} data={data}/>}
         {page === "EditFlowPage" && <SettingsSection title={`Изменить Flow #${data.flow_id}`} isEditing={true} data={data}/>}
+        {page === "SelectSessionsPage" && <SelectSessionsPage data={data}/>}
     </>
 }

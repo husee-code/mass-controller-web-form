@@ -1,0 +1,171 @@
+/* SelectSessionsPage.css */
+
+.container {
+    padding: 16px;
+    width: 100vw;
+    box-sizing: border-box;
+    min-height: 100vh;
+    background: #f8f9fa;
+    padding-bottom: 80px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.accountsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.accountItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    min-height: 56px;
+    box-sizing: border-box;
+}
+.accountItem.highlight {
+    background: lightblue;
+}
+
+.accountItem:last-child {
+    border-bottom: none;
+}
+
+.accountName {
+    font-size: 16px;
+    color: #333;
+    flex: 1;
+    margin-right: 16px;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+.accountCheckbox {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 6px;
+    border: 2px solid #007bff;
+    background: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.accountCheckbox:checked {
+    background: #007bff;
+    border-color: #007bff;
+}
+
+.accountCheckbox:checked::after {
+    content: "✓";
+    position: absolute;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.accountCheckbox:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 360px) {
+    .container {
+        padding: 12px;
+    }
+
+    .accountItem {
+        padding: 14px 16px;
+    }
+
+    .accountName {
+        font-size: 15px;
+    }
+}
+
+/* Поддержка темной темы */
+@media (prefers-color-scheme: dark) {
+    .container {
+        background: #000;
+    }
+
+    .title {
+        color: #fff;
+    }
+
+    .accountsList {
+        background: #1c1c1e;
+        border-color: #38383a;
+    }
+
+    .accountItem {
+        border-bottom-color: #38383a;
+    }
+
+    .accountName {
+        color: #fff;
+    }
+
+    .accountCheckbox {
+        background: #1c1c1e;
+        border-color: #48484a;
+    }
+
+    .accountCheckbox:checked {
+        background: #007bff;
+        border-color: #007bff;
+    }
+}
+.options-bar {
+    display: flex;
+    gap: 1rem;
+    width: fit-content;
+    position: fixed; /* Меняем absolute на fixed */
+    right: 1rem;
+    bottom: 1rem;
+
+    z-index: 1000; /* Чтобы элемент был поверх всего */
+
+}
+
+.options-bar div {
+    width: fit-content;
+    /*background: lightgrey;*/
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.clear-button {
+    background: #fdafaf;
+}
+
+.submit-button {
+    background: lightgreen;
+}
+
+.multi-select-button.active{
+    background: red;
+    transform: scale(1.2);
+}
