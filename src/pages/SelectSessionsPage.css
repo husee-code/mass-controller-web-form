@@ -36,7 +36,7 @@
     box-sizing: border-box;
 }
 .accountItem.highlight {
-    background: lightblue;
+    background: #bde0ec;
 }
 
 .accountItem:last-child {

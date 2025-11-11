@@ -2,14 +2,17 @@ import {useEffect, useState} from "react";
 import './SelectSessionsPage.css';
 
 
-
-
 function OptionsBar({
     data,
     setIsCheckedList,
     isMultiSelect, setIsMultiSelect,
-    handleSubmit
+    handleSubmit, setSelected
 }) {
+
+    const handleMultiSelectChange = () => {
+        setIsMultiSelect(!isMultiSelect);
+        setSelected([null], [null]);
+    }
 
     return <div className="options-bar">
         <div
@@ -22,7 +25,7 @@ function OptionsBar({
         </div>
         <div
             className={`multi-select-button ${isMultiSelect? "active":""}`}
-            onClick={() => setIsMultiSelect(!isMultiSelect)}
+            onClick={handleMultiSelectChange}
         >
             📝
         </div>
@@ -101,12 +104,12 @@ export default function SelectSessionsPage({ data }) {
         <div className="container">
             <h2 className="title">Выбор аккаунтов</h2>
             <ul className="accountsList">
-                {data.accounts.map(account => (
+                {data.accounts.map((account, index) => (
                     <li
                         key={account[0]}
-                        className={`accountItem${selected.includes(account[0]) ? " highlight" : ""}`}
+                        className={`accountItem${selected[0]===account[0] ? " highlight" : ""}`}
                     >
-                        <span className="accountName">{account[1]}</span>
+                        <span className="accountName">{index+1}. {account[1]}</span>
                         <input
                             className="accountCheckbox"
                             type="checkbox"
@@ -123,6 +126,7 @@ export default function SelectSessionsPage({ data }) {
             isMultiSelect={isMultiSelect}
             setIsMultiSelect={setIsMultiSelect}
             handleSubmit={handleSubmit}
+            setSelected={setSelected}
         />
     </>)
 }
