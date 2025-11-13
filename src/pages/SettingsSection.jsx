@@ -51,7 +51,7 @@ export default function SettingsSection({ title, isEditing, data }) {
         channel_name: "",
         sessionAmount: "",
         interval: "00:00",
-        unsubscribeInterval: {value: 0, unit: "days"},
+        unsubscribeInterval: {value: 0, unit: "days", isFromNow: false},
         startData: {type: "timer", value: "00:00"},  // timer | datetime
         jitter: "00:10",
         offset: 0,
@@ -113,6 +113,16 @@ export default function SettingsSection({ title, isEditing, data }) {
             console.log("Payload:", payload);
         }
     };
+
+    const handleUnsubIntervalType = (e) => {
+        e.preventDefault();
+        setForm((prev) => (
+            {
+                ...prev,
+                unsubscribeInterval: {...prev.unsubscribeInterval, isFromNow: !prev.unsubscribeInterval.isFromNow},
+            }
+        ));
+    }
     return <div style={{padding: "20px", fontFamily: "sans-serif"}}>
         <h2>{title}</h2>
         {data?.config?.debug && <p>{JSON.stringify(data)}</p>}
@@ -189,6 +199,16 @@ export default function SettingsSection({ title, isEditing, data }) {
                         <option value="hours">часов</option>
                         <option value="days">дней</option>
                     </select>
+                    {isEditing &&
+                        <button
+                            type="button"
+                            onClick={handleUnsubIntervalType}
+                        >
+                            {form.unsubscribeInterval.isFromNow ? "От этого момента" : "От момента подписки"}
+                        </button>
+                    }
+
+
                 </div>
             </label>
 
