@@ -279,7 +279,10 @@ export default function SettingsSection({ isEditing, data }) {
                             "4.5rem": "4.5rem"
                     ) : "1.5rem"
             }}
-                onClick={()=>setStartTimeExpanded((prev) => (!prev))}
+                onClick={()=> {
+                    window?.Telegram?.WebApp?.HapticFeedback?.selectionChanged();
+                    setStartTimeExpanded((prev) => (!prev));
+                }}
             >
                 {!startTimeExpanded &&
                     <div
@@ -325,7 +328,8 @@ export default function SettingsSection({ isEditing, data }) {
                                 zIndex: 100
                             }}
                             onClick={(e) => {
-                                e.stopPropagation()
+                                e.stopPropagation();
+                                window?.Telegram?.WebApp?.HapticFeedback?.selectionChanged();
                                 setForm((prev) => ({
                                     ...prev, startData: {type: "timer", value: "00:00"}
                                 }));
@@ -342,7 +346,8 @@ export default function SettingsSection({ isEditing, data }) {
                                 zIndex: 100
                             }}
                             onClick={(e) => {
-                                e.stopPropagation()
+                                e.stopPropagation();
+                                window?.Telegram?.WebApp?.HapticFeedback?.selectionChanged();
                                 setForm((prev) => ({
                                     ...prev, startData: {type: "datetime", value: getLocalDateTime(300)}
                                 }));
@@ -438,9 +443,10 @@ export default function SettingsSection({ isEditing, data }) {
             {showMore && <p className='fancy-label'>ДОПОЛНИТЕЛЬНЫЕ НАСТРОЙКИ</p>}
             <div
                 className="fancy-block"
-                onClick={() => {setShowMore(
-                    !showMore
-                )}}
+                onClick={() => {
+                    setShowMore(!showMore);
+                    window?.Telegram?.WebApp?.HapticFeedback?.selectionChanged();
+                }}
                 style={{
                     height: showMore ? '4.5rem' : '1.5rem'
             }}
