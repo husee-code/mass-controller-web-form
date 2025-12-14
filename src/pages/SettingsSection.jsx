@@ -186,6 +186,13 @@ export default function SettingsSection({ isEditing, data }) {
                             <a
                                 href={make_link(data.channel)}
                                 target="_blank"
+                                style={{
+                                    maxWidth: "10rem",
+                                    overflow: "hidden",
+                                    whiteSpace: "nowrap",
+                                    textOverflow: "ellipsis",
+                                    display: "inline-block",
+                                }}
                             >
                                 {data.channel}
                             </a>
