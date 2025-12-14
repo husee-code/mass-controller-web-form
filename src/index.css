@@ -1,11 +1,15 @@
+@import "components/vars.css";
+
 :root {
+  max-width: 100%;
+  overflow-x: clip;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--tg-theme-text-color);
+  background-color: var(--tg-theme-secondary-bg-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,11 +27,17 @@ a:hover {
 }
 
 body {
+  max-width: 100%;
+  overflow-x: clip;
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  background-color: var(--tg-theme-secondary-bg-color) !important;
+}
+
+body input {
+  color: var(--tg-theme-text-color);
 }
 
 h1 {
@@ -46,23 +56,12 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }

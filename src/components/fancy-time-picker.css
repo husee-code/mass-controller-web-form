@@ -1,0 +1,24 @@
+.fancy-time-picker-wrapper {
+    width: 100%;
+    display: flex;
+    position: relative;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: var(--tg-theme-section-bg-color);
+}
+
+.fancy-time-picker {
+    padding-inline-start: 0;
+    flex: 1;
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+}
+.fancy-time-picker::-webkit-calendar-picker-indicator {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+

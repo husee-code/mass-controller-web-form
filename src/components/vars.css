@@ -1,0 +1,11 @@
+:root {
+    --tg-theme-header-bg-color: white;
+    --tg-theme-text-color: black;
+    --tg-theme-secondary-bg-color: #f2f2f7;
+    /*--tg-theme-section-header-text-color: rgba(192, 192, 195, 0.66);*/
+    --tg-theme-section-header-text-color: #8e8e93;
+    --tg-theme-section-bg-color: #ffff;
+    --tg-theme-accent-text-color: #007aff;
+    --tg-theme-button-color: #5ac8fb;
+    --tg-theme-button-text-color: #ffff;
+}

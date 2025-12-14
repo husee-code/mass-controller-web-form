@@ -1,0 +1,13 @@
+.title-wrapper {
+    background-color: var(--tg-theme-header-bg-color);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-bottom: 0.5px solid var(--tg-theme-section-header-text-color);
+}
+.title {
+    color: var(--tg-theme-text-color);
+    font-size: 24px;
+    margin: 0.5rem;
+}

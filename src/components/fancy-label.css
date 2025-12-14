@@ -1,0 +1,18 @@
+.fancy-label-wrapper {
+    display: grid;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.fancy-label-content-wrapper {
+    display: flex;
+}
+
+.fancy-label-post-text,
+.fancy-label {
+    margin-bottom: 0;
+    margin-top: 0;
+    margin-left: 0.5rem;
+    color: var(--tg-theme-section-header-text-color);
+    font-size: 14px;
+}

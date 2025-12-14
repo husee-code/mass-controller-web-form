@@ -1,19 +1,8 @@
 /* SelectSessionsPage.css */
 
 .container {
-    width: 100vw;
-    box-sizing: border-box;
-    min-height: 100vh;
-    background: #f8f9fa;
-    padding: 16px 16px 80px;
-}
-
-.title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #333;
+    font-family: sans-serif;
+    padding: 0 20px 0 20px;
 }
 
 .accountsList {
@@ -101,39 +90,6 @@
     }
 }
 
-/* Поддержка темной темы */
-@media (prefers-color-scheme: dark) {
-    .container {
-        background: #000;
-    }
-
-    .title {
-        color: #fff;
-    }
-
-    .accountsList {
-        background: #1c1c1e;
-        border-color: #38383a;
-    }
-
-    .accountItem {
-        border-bottom-color: #38383a;
-    }
-
-    .accountName {
-        color: #fff;
-    }
-
-    .accountCheckbox {
-        background: #1c1c1e;
-        border-color: #48484a;
-    }
-
-    .accountCheckbox:checked {
-        background: #007bff;
-        border-color: #007bff;
-    }
-}
 .options-bar {
     display: flex;
     gap: 1rem;
@@ -171,12 +127,125 @@
     background: #e4e4e4;
 }
 
-.submit-button {
-    background: lightgreen;
-}
 
 .multi-select-button.active{
     border-radius: 50%;
     box-shadow: inset 0 0 0 5px lightblue;
     /*transform: scale(1.2);*/
+}
+
+.unsub-block {
+    flex: 1;
+    display: flex;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: var(--tg-theme-section-bg-color);
+}
+
+.unsub-block input {
+    padding-inline: 0;
+    border: none;
+    font-size: 1rem;
+    background-color: var(--tg-theme-section-bg-color);
+    color: var(--tg-theme-text-color);
+}
+
+.vertical-line {
+    width: 1px;
+    height: 100%;
+    background: var(--tg-theme-section-header-text-color);
+}
+
+.unsub-interval-type-button {
+    background: none;
+    border: none;
+    color: var(--tg-theme-text-color);
+}
+
+.unsub-interval-select-wrapper {
+    display: flex;
+    flex-shrink: 0;
+    position: relative;
+    justify-content: center;
+}
+
+.unsub-interval-select {
+    flex: 1;
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+}
+
+.submit-button {
+    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    width: 100%;
+    border-radius: 1rem;
+
+    overflow: hidden;
+    height: 3rem;
+
+    transition: scale 0.2s ease;
+    transform-origin: bottom;
+
+}
+
+.submit-button-wrapper {
+    position: relative;
+    display: flex;
+    background: var(--tg-theme-section-bg-color);
+    padding: 20px;
+    justify-content: center;
+
+    margin: 0 -20px 0 -20px;
+    border-top: 0.5px solid var(--tg-theme-section-header-text-color);
+}
+
+.confirm-dialog {
+    transform: scaleY(0);
+    transform-origin: 0 100%;
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 100;
+    background: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    border-radius: 1rem;
+
+    height: 15rem;
+
+    transition: transform 0.2s ease, background-color 0.2s ease-out;
+}
+
+.confirm-dialog * {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.confirm-dialog.visible {
+    transform: scaleY(1);
+    color: white;
+    background-color: black;
+}
+
+.confirm-dialog.visible * {
+    opacity: 1;
+}
+
+.confirm-dialog p {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-bottom: 2rem;
+}
+
+.icons-wrapper {
+    display: flex;
+    justify-content: space-evenly;
 }

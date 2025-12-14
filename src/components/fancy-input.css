@@ -1,0 +1,8 @@
+.fancy-input {
+    flex: 1;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: var(--tg-theme-section-bg-color);
+}

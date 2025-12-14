@@ -1,0 +1,66 @@
+/* Тёмный фон позади модалки */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45); /* затемнение */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* чтобы накрывать всё */
+}
+
+/* Сама модалка */
+.modal {
+    background: var(--tg-theme-secondary-bg-color);
+    border-radius: 12px; /* скругленные края */
+    width: 80vw;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.modal-content-wrapper {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    font-family: sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-weight: bold;
+
+    margin-bottom: 0.5rem;
+}
+
+.modal-input {
+    border: 0.5px solid var(--tg-theme-section-header-text-color);
+    border-radius: 4px;
+    background: var(--tg-theme-section-bg-color);
+
+    color: var(--tg-theme-text-color);
+
+    height: 1.5rem;
+
+    margin-bottom: 0.5rem;
+}
+
+.modal-buttons-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 0.5px solid var(--tg-theme-section-header-text-color);
+}
+
+.modal-button {
+    position: relative;
+    background: transparent;
+    color: var(--tg-theme-accent-text-color);
+    font-weight: normal;
+    padding: 0.5rem;
+    border: none;
+}
+
+/*.modal-button:not(:last-child) {*/
+/*    border-right: 0.5px solid var(--tg-theme-accent-text-color);*/
+/*}*/
