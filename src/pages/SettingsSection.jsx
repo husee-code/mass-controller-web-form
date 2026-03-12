@@ -10,6 +10,7 @@ import {formatRussianDateTime, getLocalDateTime, timeDigitsToString} from "../se
 import '../components/fancy-block.css'
 import SetValuePortal from "../components/SetValuePortal.jsx";
 import FancyBlock from "../components/FancyBlock.jsx";
+import FancyToggle from "../components/FancyToggle.jsx";
 
 function intervalEngToRus(s) {
     if (s === "minutes") return "минут";
@@ -161,6 +162,15 @@ export default function SettingsSection({ isEditing, data }) {
         formRef.current?.requestSubmit();
     }
 
+    const toggleUnsubInterval = () => {
+        setForm((prev) => (
+            {
+                ...prev,
+                unsubscribeInterval: {...prev.unsubscribeInterval, ignore: !prev.unsubscribeInterval?.ignore},
+            }
+        ));
+    }
+
     return <div className="container">
         {data?.config?.debug && <p>{JSON.stringify(data)}</p>}
         <form
@@ -182,7 +192,7 @@ export default function SettingsSection({ isEditing, data }) {
                         <div className="fancy-block-row">
                             <span>
                              Ссылка на канал
-                        </span>
+                            </span>
                             <a
                                 href={make_link(data.channel)}
                                 target="_blank"
@@ -231,8 +241,16 @@ export default function SettingsSection({ isEditing, data }) {
                     required={true}
                 />
             </FancyLabel>
-
-            <FancyLabel text="ИНТЕРВАЛ ОТПИСКИ" style={{display: 'flex'}}>
+            <FancyBlock>
+                <div className="fancy-block-row">
+                    Совершать отписки
+                    <FancyToggle
+                        value={!form.unsubscribeInterval?.ignore}
+                        onChange={toggleUnsubInterval}
+                    />
+                </div>
+            </FancyBlock>
+            {!form.unsubscribeInterval?.ignore && <FancyLabel text="ИНТЕРВАЛ ОТПИСКИ" style={{display: 'flex'}}>
                 <div className="unsub-block">
                     <input
                         type="number"
@@ -240,7 +258,7 @@ export default function SettingsSection({ isEditing, data }) {
                         value={form.unsubscribeInterval.value ?? 0}
                         onChange={handleUnsubscribeChange}
                         placeholder="Число"
-                        style={{width: isEditing ? '10%': '50%'}}
+                        style={{width: isEditing ? '10%' : '50%'}}
                         required
                     />
 
@@ -248,7 +266,7 @@ export default function SettingsSection({ isEditing, data }) {
 
                     <div
                         className="unsub-interval-select-wrapper"
-                        style={{width: isEditing ? '20%': '50%'}}
+                        style={{width: isEditing ? '20%' : '50%'}}
                     >
                         <span>{intervalEngToRus(form.unsubscribeInterval.unit)}</span>
                         <select
@@ -276,8 +294,7 @@ export default function SettingsSection({ isEditing, data }) {
                         </button>
                     </>}
                 </div>
-            </FancyLabel>
-
+            </FancyLabel>}
             <div
                 className={`fancy-block set-start-time-block${startTimeExpanded ? " expanded" : ""}`}
                 style={{
